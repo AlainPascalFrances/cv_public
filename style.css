@@ -1,0 +1,67 @@
+:root {
+  --paper: #fbfcfc;
+  --ink: #17242c;
+  --muted: #5b6670;
+  --rule: #d3dce2;
+  --water: #1f5c7a;
+  --bed1: #e6ecee; --bed2: #dbe3e6; --bed3: #cfd9dd; --bed4: #c2ced3;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121a1f; --ink: #e3e9ec; --muted: #9aa8b1; --rule: #2c3a42; --water: #7fb6d3;
+    --bed1: #1a252b; --bed2: #1f2c33; --bed3: #24333b; --bed4: #2a3a43;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--sans); }
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 1rem; }
+a { color: var(--water); text-underline-offset: .15em; }
+a:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; border-radius: 2px; }
+
+/* Masthead: name over a stylised aquifer cross-section */
+.masthead { padding-top: 3.5rem; }
+.masthead h1 { font: 600 clamp(2.1rem, 6vw, 3.1rem)/1.1 var(--serif); margin: 0 0 .35rem; letter-spacing: -.01em; }
+.tagline { margin: 0 0 1rem; color: var(--muted); font-size: 1.15rem; }
+.links { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; margin-bottom: 1.2rem; }
+.pdf { display: inline-block; padding: .5rem .95rem; border: 1.5px solid var(--water);
+  border-radius: 4px; text-decoration: none; font-weight: 600; }
+.pdf:hover { background: var(--water); color: var(--paper); }
+.strata { display: block; width: 100%; height: 90px; margin-top: 2rem; }
+.bed.b1 { fill: var(--bed1); } .bed.b2 { fill: var(--bed2); }
+.bed.b3 { fill: var(--bed3); } .bed.b4 { fill: var(--bed4); }
+.watertable { fill: none; stroke: var(--water); stroke-width: 1.6; stroke-dasharray: 7 5; vector-effect: non-scaling-stroke; }
+.well line { stroke: var(--muted); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.well .screen { stroke: var(--water); stroke-width: 4; stroke-dasharray: 2 2; }
+
+main h2 { font: 600 1.35rem/1.3 var(--serif); margin: 2.4rem 0 .9rem; padding-bottom: .3rem;
+  border-bottom: 1px solid var(--rule); }
+.profile p { margin: 0; max-width: 40em; }
+
+/* Dated entries: date column + content (spans come from LaTeX arguments) */
+.entry, .kv { margin: 0 0 1rem; }
+.entry > p, .kv > p { margin: 0; display: grid; grid-template-columns: 7.5rem 1fr; column-gap: 1rem; }
+.entry > p > span:nth-of-type(1) { color: var(--muted); font-variant-numeric: tabular-nums; grid-row: 1 / span 3; }
+.entry > p > span:nth-of-type(2) { font-weight: 600; grid-column: 2; }
+.entry > p > span:nth-of-type(3) { color: var(--muted); grid-column: 2; }
+.entry .desc, .kv .desc { grid-column: 2; }
+.entry .desc { margin-top: .15rem; }
+.kv > p > span:first-child { color: var(--muted); font-weight: 600; }
+
+.publist { list-style: none; padding: 0; margin: 0; }
+.publist li { margin-bottom: .9rem; padding-left: 1.2rem; text-indent: -1.2rem; }
+.publist strong { font-weight: 600; }
+.small, main > p:last-of-type { color: var(--muted); }
+
+footer { margin-top: 3rem; padding-bottom: 2.5rem; color: var(--muted); font-size: .9rem;
+  border-top: 1px solid var(--rule); padding-top: 1rem; }
+
+@media (max-width: 36rem) {
+  .entry > p, .kv > p { display: block; }
+  .entry > p > span, .kv > p > span { display: block; }
+  .strata { height: 60px; }
+}
+@media print { .strata, .pdf { display: none; } }
